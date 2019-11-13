@@ -11,10 +11,10 @@ export const selectCollections = createSelector(
 export const selectCollection = collectionIdParam =>
   createSelector(
     [selectCollections],
-    collections => collections[collectionIdParam]
+    collections => (collections ? collections[collectionIdParam] : null)
   )
  // converts object to array
   export const selectCollectionsForPreview = createSelector(
     [selectCollections],
-    collections => Object.keys(collections).map(key => collections[key])
+    collections => collections ? Object.keys(collections).map(key => collections[key]) : []
   )
